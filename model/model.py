@@ -11,18 +11,13 @@ with open(f"{BASE_DIR}/tokenizer_0_1_0.pkl", "rb") as file:
 with open(f"{BASE_DIR}/label_encoder_0_1_0.pkl", "rb") as file:
     le = pickle.load(file)
 
-loaded_model = load_model(f"{BASE_DIR}/detectHate_model-0_1_0.h5")
+amharic_model = load_model(f"{BASE_DIR}/detectHate_model-0_1_0.h5")
+# oromo_model = load_model(f"{BASE_DIR}/detectHate_oro_model-0_1_0.h5")
 
 def predict_pipeline(text):
     # Tokenize the text using the tokenizer
     encoded_text = tokenizer.texts_to_sequences([text])
-
-    # Pad the sequence to a fixed length
     padded_text = pad_sequences(encoded_text, padding='post', maxlen=55)
-
-    # Make predictions using the loaded model
-    predictions = loaded_model.predict(padded_text).argmax(axis=1)
-
-    # Convert predictions back to labels using the label encoder
+    predictions = amharic_model.predict(padded_text).argmax(axis=1)
     predicted_label = le.inverse_transform(predictions)[0]
     return predicted_label
