@@ -2,8 +2,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from model.model import predict_pipeline 
 from fastapi.middleware.cors import CORSMiddleware# Importing the function from your model module
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Adjust this to your frontend URL during deployment
@@ -11,6 +14,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 class TextIn(BaseModel):
