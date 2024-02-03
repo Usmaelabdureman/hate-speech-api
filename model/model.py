@@ -12,6 +12,7 @@ with open(f"{BASE_DIR}/label_encoder_0_1_0.pkl", "rb") as file:
     le = pickle.load(file)
 
 amharic_model = load_model(f"{BASE_DIR}/detectHate_model-0_1_0.h5")
+# amharic_model = load_model(f"{BASE_DIR}/quantized_model.tflite")
 # oromo_model = load_model(f"{BASE_DIR}/detectHate_oro_model-0_1_0.h5")
 
 def predict_pipeline(text):
