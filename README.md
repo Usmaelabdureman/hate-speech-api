@@ -16,7 +16,7 @@ The hate speech detection system will utilize natural language processing (NLP) 
 
 ## Dependencies
 - Python 3.x
-- Libraries: TensorFlow, Keras, PyTorch, scikit-learn, pandas, numpy, etc.
+- Libraries: TensorFlow, Keras, PyTorch, RNN, scikit-learn, pandas, numpy, etc.
 
 ## Usage
 1. Clone the repository:
